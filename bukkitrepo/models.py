@@ -15,8 +15,6 @@ class BRConnection(object):
         self.deleted_users = self.connection[self.db_info['db']].deleted_users
         self.reset_keys = self.connection[self.db_info['db']].reset_keys
 
-        self.database.authenticate(self.db_info['user'], self.db_info['password'])
-
     def get_users_collection(self):
         return self.users
 

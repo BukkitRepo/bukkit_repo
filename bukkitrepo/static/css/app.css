@@ -1,3 +1,43 @@
 body {
-  padding-top: 60px;
+  padding-top: 25px;
+}
+
+.headshot {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.author {
+  margin-top: 10px;
+  display: inline-block;
+  -webkit-transition: background-color .25s ease-in-out;
+  -moz-transition: background-color .25s ease-in-out;
+  -o-transition: background-color .25s ease-in-out;
+  -ms-transition: background-color .25s ease-in-out; 
+  transition: background-color .25s ease-in-out;
+  padding: 5px 30px 5px 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.author p {
+  text-align: center;
+}
+
+.author:link, .author:visited, .author:hover, .author:active {
+  color: #333;
+  text-decoration: none;
+}
+
+.author:hover {
+  background-color: #ecf0f1;
+  color: #333;
 }

@@ -9,48 +9,88 @@
 
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/boostrap-responsive.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet">
 
     <!--[if lt IE 9]>
-      <script src="{{ url_for('static', filename='js/vendor/html5shiv.min.js') }}"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
     <![endif]-->
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Project name</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
+    <div class="container">
+
+      <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/">Bukkit Repo</a>
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                {% if projects %}
+                <li class="active"><a href="/">Projects</a></li>
+                {% else %}
+                <li><a href="/">Projects</a></li>
+                {% endif %}
+
+                {% if add_project %}
+                <li class="active"><a href="/projects/new/">Add a project</a></li>
+                {% else %}
+                <li><a href="/projects/new/">Add a project</a></li>
+                {% endif %}
+                
+                <li><a href="https://github.com/bukkitrepo/bukkit_repo/issues">Feedback</a></li>
+
+                {% if logged_in %}
+                <li class="dropdown">
+                  <a class="dropdown-toggle"
+                     data-toggle="dropdown"
+                     href="#">
+                      Dropdown
+                      <b class="caret"></b>
+                    </a>
+                  <ul class="dropdown-menu">
+                    <li href="/accounts/">Account</li>
+                    <li href="/accounts/log-out/">Log out</li>
+                  </ul>
+                </li>
+                {% else %}
+                <li class="dropdown">
+                  <a class="dropdown-toggle"
+                     data-toggle="dropdown"
+                     href="#">
+                      Account
+                      <b class="caret"></b>
+                    </a>
+                  <ul class="dropdown-menu">
+                    <li href="/accounts/sign-in/">Sign in</li>
+                    <li href="/accounts/register/">Register</li>
+                  </ul>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
 
     <div class="container">
 
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+      {% block content %}{% endblock %}
 
     </div>
 
-    <script>
-      document.write('<script src=' +
-      ('__proto__' in {} ? '{{ url_for('static', filename='js/vendor/zepto.min.js') }}' : '{{ url_for('static', filename='js/vendor/jquery.min.js') }}') +
-      '><\/script>')
-    </script>
-    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <footer>
+      <div class="container">
+        <hr>
+        <blockquote>i thought it was going to be php at some point... blissfully ignoring the discussion about virtualenv right in front of me<small>blha303</small></blockquote>
+      </div>
+    </footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
   </body>
 </html>

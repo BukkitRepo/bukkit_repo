@@ -1,9 +1,0 @@
-{
-	"recaptcha_private_key": "xxxx_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	"session_secret_key": "tiyR01A{syTHvYU}uKtK(UpF8ux~hc|I(Dh^Mww",
-	"database": {
-		"host": "localhost",
-		"port": 27017,
-		"db": "bukkit_repo"
-	}
-}

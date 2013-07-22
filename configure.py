@@ -66,6 +66,7 @@ print("All of the requirement tests have passed. The last step is to write the c
 config = {'database': {}}
 
 config['recaptcha_private_key'] = input("What is the recaptcha private key? ")
+config['mandrill_api_key'] = input("What is the mandrill API key? ")
 generate_session_key = input('Bukkit Repo uses a private "session key" in order to encrypt user data. Do you want me to generate one for you? [yes/no] ')
 
 if generate_session_key.lower() == 'yes' or generate_session_key.lower() == 'y':

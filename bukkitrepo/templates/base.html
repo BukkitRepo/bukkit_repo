@@ -10,6 +10,7 @@
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}" rel="stylesheet">
+    {% block custom_styles %}{% endblock %}
 
     <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -46,12 +47,12 @@
                 {% if logged_in %}
                 <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    Dropdown
+                    {{ name }}
                     <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a href="/accounts/">Account</a></li>
-                    <li><a href="/accounts/log-out/">Log out</a></li>
+                    <li><a href="/account/">Account</a></li>
+                    <li><a href="/account/log_out/">Log out</a></li>
                   </ul>
                 </li>
                 {% else %}
@@ -61,8 +62,8 @@
                     <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a href="/accounts/sign-in/">Sign in</a></li>
-                    <li><a href="/accounts/register/">Register</a></li>
+                    <li><a href="/account/sign_in/">Sign in</a></li>
+                    <li><a href="/account/register/">Register</a></li>
                   </ul>
                 </li>
                 {% endif %}
@@ -90,6 +91,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-
+    {% block custom_scripts %}{% endblock %}
   </body>
 </html>

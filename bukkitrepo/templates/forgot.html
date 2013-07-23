@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Forgot Password{% endblock %}
+
+{% block content %}
+<h3>Forgot Password</h3>
+<p>Please enter your email address in order to recover your password. A password reset link will be sent to your email.</p>
+
+{% for error in errors %}
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {% autoescape false %}
+      {{ error }}
+    {% endautoescape %}
+  </div>
+{% endfor %}
+
+<form id="forgot-form" class="form-horizontal" method="post">
+  <div class="control-group">
+    <label class="control-label" for="input-email">Email</label>
+    <div class="controls">
+      <input class="required" type="text" id="input-email" placeholder="Email" name="email">
+    </div>
+  </div>
+  <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Send Reset Email</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

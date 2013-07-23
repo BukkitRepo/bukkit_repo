@@ -75,7 +75,7 @@ else:
     config['session_secret_key'] = input('What session key should I use? ')
 
 config['database']['host'] = input('What host is the mongodb database server located on? ')
-config['database']['port'] = input('What port is the mongodb database server located on? ')
+config['database']['port'] = int(input('What port is the mongodb database server located on? '))
 config['database']['db'] = input('What database should I use on the database server? ')
 
 print()

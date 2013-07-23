@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="span12">
+            {% autoescape false %}
+                {{ page_content }}
+            {% endautoescape %}
+        </div>
+    </div>
+{% endblock %}

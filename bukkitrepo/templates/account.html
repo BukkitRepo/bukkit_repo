@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Account{% endblock %}
+
+{% block content %}
+<h3>Account</h3>
+
+{% for alert in alerts %}
+  <div class="alert">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {% autoescape false %}
+      {{ alert }}
+    {% endautoescape %}
+  </div>
+{% endfor %}
+
+{% for error in errors %}
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {% autoescape false %}
+      {{ error }}
+    {% endautoescape %}
+  </div>
+{% endfor %}
+
+{% for success in successes %}
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {% autoescape false %}
+      {{ success }}
+    {% endautoescape %}
+  </div>
+{% endfor %}
+
+<h4 style="margin-bottom: 5px">Change Email</h4>
+<form id="change-email-form" class="form-horizontal" method="post" action="/account/change/email/">
+  <div class="control-group">
+    <label class="control-label" for="input-password-old-emailform">Password</label>
+    <div class="controls">
+      <input class="required" type="password" id="input-password-old-emailform" placeholder="Password" name="old_password">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="input-email">New Email</label>
+    <div class="controls">
+      <input class="required" type="text" id="input-email" placeholder="Email" name="email">
+    </div>
+  </div>
+  <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<h4 style="margin-bottom: 5px">Change Password</h4>
+<form id="change-password-form" class="form-horizontal" method="post" action="/account/change/password/">
+  <div class="control-group">
+    <label class="control-label" for="input-password-old-passwordform">Password</label>
+    <div class="controls">
+      <input class="required" type="password" id="input-password-old-passwordform" placeholder="Password" name="old_password">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="input-password">New Password</label>
+    <div class="controls">
+      <input class="required" type="password" id="input-password" placeholder="Password" name="password">
+    </div>
+  </div>
+  <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<h4 style="margin-bottom: 5px; color: red">Danger Zone</h4>
+<a href="#delete-modal" role="button" class="btn btn-danger" data-toggle="modal">Delete My Account</a>
+
+<div id="delete-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="accountDeletionModal" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Delete My Account</h3>
+  </div>
+  <div class="modal-body">
+    <p>This is a destructive operation. Deleting your account is a simple process, but it's permanent. All of your order history and user data will disappear, and bukkitrepo staff will not be able to restore your account.</p>
+    <p>Are you sure you want to delete your account?</p>
+  </div>
+  <div class="modal-footer">
+    <form id="delete-account-form" class="form-inline" method="post" action="/account/delete/">
+      <input type="password" class="input-small required" placeholder="Password" name="password">
+      <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+      <button type="submit" class="btn btn-danger">Confirm</button>
+      <button class="btn" data-dismiss="modal" aria-hidden="true">I'm Not Sure</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

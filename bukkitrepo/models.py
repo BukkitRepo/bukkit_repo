@@ -28,7 +28,8 @@ class User(object):
 
 
 class ResetKey(object):
-    def __init__(self, user, key, created_at=datetime.now()):
+    def __init__(self, user, key, used=False, created_at=datetime.now()):
         self.data = {'user': user,
                      'key': key,
+                     'used': used,
                      'created_at': created_at}

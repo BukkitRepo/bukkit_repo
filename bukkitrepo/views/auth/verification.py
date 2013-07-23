@@ -18,7 +18,7 @@ def resend_verification(email=None):
     content = '''
       <h1>Account verification</h1>
       <p>In order to use your Bukkit Repo account, you need to verify your email address. The good news is that it's easy. Just click the link below!</p>
-      http://bukkitrepo.me/verification/verify/{0}
+      http://bukkitrepo.me/account/verification/verify/{0}
     '''.format(user['verification_key'])
 
     subject = 'Verify your bukkitrepo account'
@@ -37,7 +37,7 @@ def resend_verification(email=None):
 
 
 def verify_user(verification_key=None):
-    conn_mgr = ConnectionManager()
+    conn_mgr = BRConnection()
     users = conn_mgr.users
 
     user = users.find_one({'verification_key': verification_key})
